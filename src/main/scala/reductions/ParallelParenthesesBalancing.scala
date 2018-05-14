@@ -32,7 +32,7 @@ object ParallelParenthesesBalancingRunner {
     }
     println(s"parallel result = $parResult")
     println(s"parallel balancing time: $fjtime ms")
-    println(s"speedup: ${seqtime / fjtime}")
+    println(s"speedup: ${seqtime.value / fjtime.value}")
   }
 }
 
@@ -41,8 +41,29 @@ object ParallelParenthesesBalancing {
   /** Returns `true` iff the parentheses in the input `chars` are balanced.
    */
   def balance(chars: Array[Char]): Boolean = {
-    ???
-  }
+      
+      
+      
+      def balanceIter(remainingString: List[Char], sum: Int) :Boolean ={
+        if(sum == -1)
+          false
+        else if(remainingString.length == 0 && sum == 0)
+          true
+        else if(remainingString.length == 0 && sum != 0)
+          false
+        else
+         balanceIter(remainingString.tail,sum + {
+          if(remainingString.head == '(') 
+          1
+          else if(remainingString.head == ')')
+          -1
+          else
+          0})
+      
+        
+      }       
+     balanceIter(chars.toList,0);
+    }
 
   /** Returns `true` iff the parentheses in the input `chars` are balanced.
    */

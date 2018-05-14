@@ -25,7 +25,7 @@ object LineOfSightRunner {
       LineOfSight.parLineOfSight(input, output, 10000)
     }
     println(s"parallel time: $partime ms")
-    println(s"speedup: ${seqtime / partime}")
+    println(s"speedup: ${seqtime.value / partime.value}")
   }
 }
 
